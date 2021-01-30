@@ -1,15 +1,17 @@
 import java.sql.*;
-/** Реализация базы данных. Класс имеет методы для создания и редактирования БД.
- * <br>
- * <br>{@link #getConnection()} Подключает к базе данных.
- * <br>{@link #createStatement()} Создает statement.
- * <br>{@link #createTable(String)} Создает таблицу. */
+/**
+ * Реализация базы данных. Класс имеет методы для создания и редактирования базы данных.
+ * <p>
+ * Вызывать, если нужно работать с базой данных.
+ *  */
 public class SQLiteJDBC {
+
     Connection connection;
     Statement statement;
 
-    // todo Добавить документацию к классу
-
+    /**
+     * Метод создает подключение к базе данных (или файлу с базами данных, еще сам не знаю) с именем <code>test.db</code>
+     * */
     public void getConnection(){
         try{Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection("jdbc:sqlite:test.db");
@@ -20,6 +22,9 @@ public class SQLiteJDBC {
         }
     }
 
+    /**
+     * Метод создает объект <code>statement</code>
+     */
     public void createStatement(){
         try {
             statement = connection.createStatement();
@@ -30,6 +35,12 @@ public class SQLiteJDBC {
         }
     }
 
+    /**
+     * Отличается от метода {@link #executeUpdate(String)} только тем,
+     * что выводится надпись <i>Table create successfully</i>
+     * вместо надписи <i>Update executed</i>
+     * @param sql Команда для выполнения на языке sql.
+     */
     public void createTable(String sql){
         try{
 
@@ -41,6 +52,10 @@ public class SQLiteJDBC {
         }
     }
 
+    /**
+     * Метод для выполнения команд на языке sql.
+      * @param sql Команда для выполнения на языке sql.
+     */
     public void executeUpdate(String sql){
         try {
             statement.executeUpdate(sql);
@@ -50,6 +65,9 @@ public class SQLiteJDBC {
         }
     }
 
+    /**
+     * Метод закрывает соединение.
+     */
     public void closeConnection(){
         try {
             connection.close();
@@ -60,6 +78,9 @@ public class SQLiteJDBC {
         }
     }
 
+    /**
+     * Метод закрывает <code>statement</code>
+     */
     public void closeStatement(){
         try {
             statement.close();
@@ -70,6 +91,9 @@ public class SQLiteJDBC {
         }
     }
 
+    /**
+     * Метод проверяет закрыто ли подключение.
+     */
     public void checkConnectionClose(){
         try {
             if (connection.isClosed())
