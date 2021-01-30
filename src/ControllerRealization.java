@@ -12,6 +12,7 @@ public class ControllerRealization implements Controller{
     ControllerRealization(Television tv){
         this.tv = tv;
     }
+    // todo Сохранять результаты работы программы в базу данных
 
     @Override
     public void showInfo() {
