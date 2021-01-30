@@ -1,10 +1,13 @@
 import java.sql.*;
+/** Реализация базы данных. Класс имеет методы для создания и редактирования БД.
+ * <br>
+ * <br>{@link #getConnection()} Подключает к базе данных.
+ * <br>{@link #createStatement()} Создает statement.
+ * <br>{@link #createTable(String)} Создает таблицу. */
 public class SQLiteJDBC {
     Connection connection;
     Statement statement;
 
-    // todo Реализовать базу данных. Добавить комманды.
-    // todo Сохранять результаты работы программы в базу данных
     // todo Добавить документацию к классу
 
     public void getConnection(){
