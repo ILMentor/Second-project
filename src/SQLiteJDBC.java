@@ -41,6 +41,7 @@ public class SQLiteJDBC {
     public void executeUpdate(String sql){
         try {
             statement.executeUpdate(sql);
+            System.out.println("Update executed.");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
