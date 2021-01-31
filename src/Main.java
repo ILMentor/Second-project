@@ -4,10 +4,12 @@ import java.sql.SQLException;
 public class Main {
 
     public static void main(String[] args) {
+        int age2 = 15;
         SQLiteJDBC sqLiteJDBC = new SQLiteJDBC();
         sqLiteJDBC.getConnection();
         sqLiteJDBC.createStatement();
         try {
+            sqLiteJDBC.executeUpdate("UPDATE COMPANY set AGE = " + age2 + " where ID = 3");
             ResultSet rs = sqLiteJDBC.statement.executeQuery( "SELECT * FROM COMPANY;" );
             while (rs.next()) {
                 int id = rs.getInt("id");
