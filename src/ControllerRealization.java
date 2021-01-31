@@ -17,7 +17,7 @@ public class ControllerRealization implements Controller{
         else
             System.out.println("TV is off.");
         System.out.println("Channel is " + tv.getChannel());
-        System.out.println("Sound: " + tv.getSound());
+        System.out.println("Sound: " + tv.getSound() + "\n");
     }
 
     @Override
