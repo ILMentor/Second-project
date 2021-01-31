@@ -16,15 +16,15 @@ public class Television {
     private int channel = 0;
     private int sound = 0;
     private boolean power = false;
-    ConnectionUtil connectionUtil = new ConnectionUtil();
+
 
     {
-        connectionUtil.createStatement();
+        sqLiteJDBC.getConnection();
+        sqLiteJDBC.createStatement();
     }
 
     public void setPower(){
-        int id = 0;
-        sqLiteJDBC.executeUpdate("UPDATE TV set POWER = " + !power + "where id = " + id);
+        sqLiteJDBC.executeUpdate("UPDATE TV set POWER = '" + !power + "' where ID = 1");
         power = !power;
     }
     public boolean getPower(){
@@ -38,7 +38,6 @@ public class Television {
             sound = 100;
         if (sound < 0)
             sound = 0;
-        connectionUtil.updateSound();
     }
     public int getSound(){
         return sound;
