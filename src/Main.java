@@ -1,6 +1,9 @@
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Главный класс. Постоянно меняется, нужен для того, чтобы тестить работу программы.
+ */
 public class Main {
 
     public static void main(String[] args) {

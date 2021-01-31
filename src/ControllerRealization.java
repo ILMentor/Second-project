@@ -1,13 +1,15 @@
 public class ControllerRealization implements Controller{
     Television tv;
-    /** Реализация интерфейса {@link Controller}.
-     * Использует методы класса {@link Television}.
-     * Для правильной работы класса нужно подключить объект одного из подклассов класса {@link Television}
+    /**
+     * Это класс пульта. Любое взаимодействие с пультом проходит через этот класс.
+     * Результаты работы этого класса влияют на класс {@link Television} как пульт должен влият на телевизор.
+     * <p>
+     * Для правильной работы класса нужно подключить объект одного из подклассов класса {@link Television}:
+     * {@link TV} или {@link TV2}.
      */
     ControllerRealization(Television tv){
         this.tv = tv;
     }
-    //todo Написать в документации разницу между этим классом и Television.
     @Override
     public void showInfo() {
         if(tv.getPower())

@@ -1,10 +1,16 @@
-/** Класс хранит данные телевизора.
- * @see TV
- * @see TV2 */
+
 /* todo Нужно закончить интеграцию моей базы данных в этот проект.
     Как записывать данные в базу я понял. Нужно теперь их оттуда достатьвать. */
     //todo Нужно реализовать запись данных для одного телика сначала, потом для двух.
     //todo Понять, что не так было с блоками try catch и return и понять как мне помог мой финт ушами.
+
+/**
+ * Класс телевизора. Идея состоит в том, что он должен хранить данные телевизора (не в пульте же это делать).
+ * Мой проект маленький, но если бы он был больше, то такое разделение было бы очень кстати.
+ * <p>
+ * Класс имеет стандартные методы и два подкласса {@link TV} и {@link TV2}
+ * как два разных телевизора - наследника этого класса, с которыми сможет взаимодействовать пульт.
+ */
 public class Television {
     SQLiteJDBC sqLiteJDBC = new SQLiteJDBC();
     private int channel = 0;
@@ -15,8 +21,7 @@ public class Television {
     {
         connectionUtil.createStatement();
     }
-    /** Метод устанавливает и записывает значение переменной <b>boolean</b>
-     * Получить значение переменной можно через */
+
     public void setPower(){
         int id = 0;
         sqLiteJDBC.executeUpdate("UPDATE TV set POWER = " + !power + "where id = " + id);
@@ -51,16 +56,10 @@ public class Television {
         return channel;
     }
 }
-/**
- * @see TV2*/
+
 class TV extends Television{
-    @Override
-    public void setPower() {
-        super.setPower();
-    }
+
 }
-/**
- * @see TV*/
 
 class TV2 extends Television{
 }

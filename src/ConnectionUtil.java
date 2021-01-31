@@ -3,6 +3,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * Класс для работы с базой данных на языке MySQL. Класс похожий на SQLiteJDBC, но там используется SQLite.
+ * SQLite вроде бы проще в техническом плане, поэтому я решил работать с ним. MySQL тяжелый, не подходит для моего проекта.
+ */
 public class ConnectionUtil {
     Statement statement;
     Connection connection;
