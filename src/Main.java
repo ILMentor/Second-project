@@ -5,23 +5,26 @@ import java.sql.SQLException;
  * Главный класс. Постоянно меняется, нужен для того, чтобы тестить работу программы.
  */
 public class Main {
-//todo Сравнить две попытки в истории коммитов гита. Понять как среда разработки сделала то, что у меня не получилось.
+
     public static void main(String[] args) {
         SQLiteJDBC sqLiteJDBC = new SQLiteJDBC();
         Controller controller = new ControllerRealization(new TV());
+        Main main = new Main();
         sqLiteJDBC.getConnection();
         sqLiteJDBC.createStatement();
-        showInfo(sqLiteJDBC, controller);
+        controller.showInfo();
+        main.showInfo();
         controller.pressPowerButton();
-        showInfo(sqLiteJDBC, controller);
+        controller.showInfo();
+        main.showInfo();
         sqLiteJDBC.closeConnection();
         sqLiteJDBC.closeStatement();
     }
 
-    private static void showInfo(SQLiteJDBC sqLiteJDBC, Controller controller) {
-        controller.showInfo();
+    public void showInfo(){
         try {
-            ResultSet rs = sqLiteJDBC.statement.executeQuery( "SELECT * FROM TV where ID = 1;" );
+            SQLiteJDBC sqLiteJDBC = new SQLiteJDBC();
+            ResultSet rs = sqLiteJDBC.statement.executeQuery( "SELECT * FROM TV;" );
             while (rs.next()) {
                 int id = rs.getInt("id");
                 boolean power = rs.getBoolean("power");
