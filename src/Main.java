@@ -4,25 +4,21 @@ import java.sql.SQLException;
 public class Main {
 
     public static void main(String[] args) {
-        int age2 = 15;
         SQLiteJDBC sqLiteJDBC = new SQLiteJDBC();
         sqLiteJDBC.getConnection();
         sqLiteJDBC.createStatement();
         try {
-            sqLiteJDBC.executeUpdate("UPDATE COMPANY set AGE = " + age2 + " where ID = 3");
-            ResultSet rs = sqLiteJDBC.statement.executeQuery( "SELECT * FROM COMPANY;" );
+            ResultSet rs = sqLiteJDBC.statement.executeQuery( "SELECT * FROM TV;" );
             while (rs.next()) {
                 int id = rs.getInt("id");
-                String  name = rs.getString("name");
-                int age  = rs.getInt("age");
-                String  address = rs.getString("address");
-                float salary = rs.getFloat("salary");
+                boolean power = rs.getBoolean("power");
+                int channel  = rs.getInt("channel");
+                int sound = rs.getInt("sound");
 
                 System.out.println( "ID = " + id );
-                System.out.println( "NAME = " + name );
-                System.out.println( "AGE = " + age );
-                System.out.println( "ADDRESS = " + address );
-                System.out.println( "SALARY = " + salary );
+                System.out.println( "power = " + power );
+                System.out.println( "channel = " + channel );
+                System.out.println( "sound = " + sound );
                 System.out.println();
             }
         } catch (SQLException throwables) {
