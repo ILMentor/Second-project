@@ -1,8 +1,3 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-
 public class ControllerRealization implements Controller{
     Television tv;
     /** Реализация интерфейса {@link Controller}.
@@ -12,8 +7,7 @@ public class ControllerRealization implements Controller{
     ControllerRealization(Television tv){
         this.tv = tv;
     }
-    // todo Сохранять результаты работы программы в базу данных
-
+    //todo Написать в документации разницу между этим классом и Television.
     @Override
     public void showInfo() {
         if(tv.getPower())
