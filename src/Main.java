@@ -12,6 +12,8 @@ public class Main {
         sqLiteJDBC.createStatement();
         showInfo(sqLiteJDBC);
         controller.pressPowerButton();
+        controller.pressNextChannelButton();
+        controller.pressSoundUpButton();
         showInfo(sqLiteJDBC);
         sqLiteJDBC.closeConnection();
         sqLiteJDBC.closeStatement();
