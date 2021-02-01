@@ -3,6 +3,9 @@
     Как записывать данные в базу я понял. Нужно теперь их оттуда достатьвать. */
     //todo Нужно реализовать запись данных для одного телика сначала, потом для двух.
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  * Класс телевизора. Идея состоит в том, что он должен хранить данные телевизора (не в пульте же это делать).
  * Мой проект маленький, но если бы он был больше, то такое разделение было бы очень кстати.
@@ -12,21 +15,37 @@
  */
 public class Television {
     SQLiteJDBC sqLiteJDBC = new SQLiteJDBC();
-    private int channel = 0;
-    private int sound = 0;
-    private boolean power = false;
+    private int channel;
+    private int sound;
+    private boolean power;
 
 
     {
         sqLiteJDBC.getConnection();
         sqLiteJDBC.createStatement();
+        try {
+            power = sqLiteJDBC.executeQuery().getBoolean("power");
+            sound = sqLiteJDBC.executeQuery().getInt("sound");
+            channel = sqLiteJDBC.executeQuery().getInt("channel");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     public void setPower(){
         power = !power;
-        sqLiteJDBC.executeUpdate("UPDATE TV set power = 'true' where ID = 1");
+        if (power){
+            sqLiteJDBC.executeUpdate("UPDATE TV set power = 1 where ID = 1");
+        } else {
+            sqLiteJDBC.executeUpdate("UPDATE TV set power = 0 where ID = 1");
+        }
     }
     public boolean getPower(){
+        try {
+            power = sqLiteJDBC.executeQuery().getBoolean("power");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
         return power;
     }
 
@@ -37,8 +56,14 @@ public class Television {
             sound = 100;
         if (sound < 0)
             sound = 0;
+        sqLiteJDBC.executeUpdate("UPDATE TV set SOUND = " + sound + " where ID = 1");
     }
     public int getSound(){
+        try {
+            sound = sqLiteJDBC.executeQuery().getInt("sound");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
         return sound;
     }
 
@@ -49,8 +74,14 @@ public class Television {
             channel = 20;
         if (channel < 1)
             channel = 1;
+        sqLiteJDBC.executeUpdate("UPDATE TV set channel = " + channel + " where ID = 1");
     }
     public int getChannel(){
+        try {
+            channel = sqLiteJDBC.executeQuery().getInt("channel");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
         return channel;
     }
 }
