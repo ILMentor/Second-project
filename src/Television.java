@@ -2,7 +2,6 @@
 /* todo Нужно закончить интеграцию моей базы данных в этот проект.
     Как записывать данные в базу я понял. Нужно теперь их оттуда достатьвать. */
     //todo Нужно реализовать запись данных для одного телика сначала, потом для двух.
-    //todo Понять, что не так было с блоками try catch и return и понять как мне помог мой финт ушами.
 
 /**
  * Класс телевизора. Идея состоит в том, что он должен хранить данные телевизора (не в пульте же это делать).
@@ -24,8 +23,8 @@ public class Television {
     }
 
     public void setPower(){
-        sqLiteJDBC.executeUpdate("UPDATE TV set POWER = '" + !power + "' where ID = 1");
         power = !power;
+        sqLiteJDBC.executeUpdate("UPDATE TV set power = 'true' where ID = 1");
     }
     public boolean getPower(){
         return power;
@@ -55,8 +54,7 @@ public class Television {
         return channel;
     }
 }
- //todo Прогуглить тему перегрузки и переопределения методов.
- // Мне кажется после этого я смогу лучше понять как именно нужно реализовать задумку с двумя теликами.
+
 class TV extends Television{
 
 }

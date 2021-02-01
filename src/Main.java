@@ -5,26 +5,20 @@ import java.sql.SQLException;
  * Главный класс. Постоянно меняется, нужен для того, чтобы тестить работу программы.
  */
 public class Main {
-
     public static void main(String[] args) {
         SQLiteJDBC sqLiteJDBC = new SQLiteJDBC();
         Controller controller = new ControllerRealization(new TV());
-        Main main = new Main();
         sqLiteJDBC.getConnection();
         sqLiteJDBC.createStatement();
-        controller.showInfo();
-        main.showInfo();
         controller.pressPowerButton();
-        controller.showInfo();
-        main.showInfo();
+        showInfo(sqLiteJDBC);
         sqLiteJDBC.closeConnection();
         sqLiteJDBC.closeStatement();
     }
 
-    public void showInfo(){
+    private static void showInfo(SQLiteJDBC sqLiteJDBC) {
         try {
-            SQLiteJDBC sqLiteJDBC = new SQLiteJDBC();
-            ResultSet rs = sqLiteJDBC.statement.executeQuery( "SELECT * FROM TV;" );
+            ResultSet rs = sqLiteJDBC.statement.executeQuery( "SELECT * FROM TV where ID = 1;" );
             while (rs.next()) {
                 int id = rs.getInt("id");
                 boolean power = rs.getBoolean("power");
