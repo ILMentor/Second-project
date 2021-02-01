@@ -10,6 +10,7 @@ public class Main {
         Controller controller = new ControllerRealization(new TV());
         sqLiteJDBC.getConnection();
         sqLiteJDBC.createStatement();
+        showInfo(sqLiteJDBC);
         controller.pressPowerButton();
         showInfo(sqLiteJDBC);
         sqLiteJDBC.closeConnection();
@@ -18,7 +19,7 @@ public class Main {
 
     private static void showInfo(SQLiteJDBC sqLiteJDBC) {
         try {
-            ResultSet rs = sqLiteJDBC.statement.executeQuery( "SELECT * FROM TV where ID = 1;" );
+            ResultSet rs = sqLiteJDBC.statement.executeQuery( "SELECT * FROM TV where ID = 1;");
             while (rs.next()) {
                 int id = rs.getInt("id");
                 boolean power = rs.getBoolean("power");
