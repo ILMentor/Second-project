@@ -8,7 +8,7 @@ public class SQLiteJDBC {
 
     Connection connection;
     Statement statement;
-
+    ResultSet rs;
     /**
      * Метод создает подключение к базе данных (или файлу с базами данных, еще сам не знаю) с именем <code>test.db</code>
      * */
@@ -63,6 +63,15 @@ public class SQLiteJDBC {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+    }
+
+    public ResultSet executeQuery(){
+        try {
+            rs = statement.executeQuery("SELECT * FROM TV where id = 1");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return rs;
     }
 
     /**
