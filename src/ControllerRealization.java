@@ -37,6 +37,12 @@ public class ControllerRealization implements Controller{
     }
 
     @Override
+    public void pressSoundUpButton(int count) {
+        tv.setSound(count);
+        System.out.println("Sound: " + tv.getSound());
+    }
+
+    @Override
     public void pressSoundDownButton() {
         tv.setSound(-1);
         System.out.println("Sound: " + tv.getSound());
@@ -52,5 +58,13 @@ public class ControllerRealization implements Controller{
     public void pressPreviousChannelButton() {
         tv.setChannel(-1);
         System.out.println("Now you are looking at channel " + tv.getChannel());
+    }
+
+    @Override
+    public void setDefault() {
+        tv.setSound(-100);
+        tv.setChannel(-20);
+        if(tv.getPower())
+        tv.setPower();
     }
 }

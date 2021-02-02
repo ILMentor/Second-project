@@ -1,5 +1,5 @@
-/** Класс содержит все методы, которые должны быть у пульта*/
-// todo Добавить и реализовать метод setDefault
+/** Класс содержит все методы, которые должны быть у пульта.
+ * */
 public interface Controller {
     /**
      * Показать всю информацию по выбранному телевизору.
@@ -13,9 +13,15 @@ public interface Controller {
     void pressPowerButton();
 
     /**
-     * Повысить громкость телевизора.
+     * Повысить громкость телевизора на 1.
       */
     void pressSoundUpButton();
+
+    /**
+     * Повысить громкость телевизора на <code>count</code>
+     * @param count - изменение громкости
+     */
+    void pressSoundUpButton(int count);
 
     /**
      * Понизить громкость телевизора.
@@ -31,4 +37,15 @@ public interface Controller {
      * Предыдущий канал.
       */
     void pressPreviousChannelButton();
+
+    /**
+     * Метод устанавливает стандратные значение переменных.
+     * <pre>
+     *
+     *     power - false
+     *     sound - 0
+     *     channel - 1
+     * </pre>
+     */
+    void setDefault();
 }

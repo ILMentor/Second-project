@@ -10,16 +10,18 @@ public class Main {
         Controller controller = new ControllerRealization(new TV());
         sqLiteJDBC.getConnection();
         sqLiteJDBC.createStatement();
-        showInfo(sqLiteJDBC);
+        showInfoFromTable(sqLiteJDBC);
         controller.pressPowerButton();
         controller.pressNextChannelButton();
-        controller.pressSoundUpButton();
-        showInfo(sqLiteJDBC);
+        controller.pressSoundUpButton(5);
+        showInfoFromTable(sqLiteJDBC);
+        controller.setDefault();
+        showInfoFromTable(sqLiteJDBC);
         sqLiteJDBC.closeConnection();
         sqLiteJDBC.closeStatement();
     }
 
-    private static void showInfo(SQLiteJDBC sqLiteJDBC) {
+    private static void showInfoFromTable(SQLiteJDBC sqLiteJDBC) {
         try {
             ResultSet rs = sqLiteJDBC.statement.executeQuery( "SELECT * FROM TV where ID = 1;");
             while (rs.next()) {
